@@ -4,7 +4,7 @@ Shader "My/BlackLine" {
 	// (backface culling and lightning are turned off)
 	
     Properties {
-    	_Color ("Main Color", Color) = (0,0,0,1)
+    	_Color ("Main Color", Color) = (0,0,1,1)
     	//_BackColor ("Back Color", Color) = (1,0,0,1)
     }
     

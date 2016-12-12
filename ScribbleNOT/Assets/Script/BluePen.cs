@@ -1,50 +1,26 @@
 using UnityEngine;
 using System.Collections;
 
-public class LinesGL : MonoBehaviour {
+public class BluePen : MonoBehaviour {
 
-	public Shader shader;
+	public Shader blueShader;
 
-	private static Material m;
-	private GameObject g;
+	private static Material blueMat;
+	private GameObject bluePen;
 	private float speed = 100.0f;
 	private Vector3[] lp;
 	private Vector3[] sp;
 	private Vector3 s;
-
-	private GUIStyle labelStyle;
-	private GUIStyle linkStyle;
 	
 	void Start () {
-		labelStyle = new GUIStyle();
-		labelStyle.normal.textColor = Color.black;
 		
-		linkStyle = new GUIStyle();
-		linkStyle.normal.textColor = Color.blue;
-		
-		m = new Material(shader);
-		g = new GameObject("g");
+		blueMat = new Material(blueShader);
+		bluePen = new GameObject("blueLine");
 		lp = new Vector3[0];
 		sp = new Vector3[0];
 	}
 	
-	void processInput() {
-		float s = speed * Time.deltaTime;
-		if(Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)) s = s * 0.1f;
-		if(Input.GetKey(KeyCode.UpArrow)) g.transform.Rotate(-s, 0, 0);
-		if(Input.GetKey(KeyCode.DownArrow)) g.transform.Rotate(s, 0, 0);
-		if(Input.GetKey(KeyCode.LeftArrow)) g.transform.Rotate(0, -s, 0);
-		if(Input.GetKey(KeyCode.RightArrow)) g.transform.Rotate(0, s, 0);
-		
-		if(Input.GetKeyDown(KeyCode.C)) {
-			g.transform.rotation = Quaternion.identity;
-			lp = new Vector3[0];
-			sp = new Vector3[0];
-		}
-	}
-	
 	void Update() {
-		processInput();
 		
 		if(Input.GetMouseButton(0)) {
 			
@@ -67,7 +43,6 @@ public class LinesGL : MonoBehaviour {
 	
 	/** Replace the Update function with this one for a click&drag drawing option */
 	void Update1() {
-		processInput();
 		
 		Vector3 e;
 		
@@ -103,17 +78,19 @@ public class LinesGL : MonoBehaviour {
 	}
 	
 	Vector3 GetNewPoint() {
-		return g.transform.InverseTransformPoint(
+       return bluePen.transform.InverseTransformPoint(
 			Camera.main.ScreenToWorldPoint(
-				new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z * -1.0f)
+                new Vector3(this.transform.position.x, this.transform.position.y, -1)
 			)
 		);
+
+        // return new Vector3(bluePen.transform.position.x, transform.position.y, -1);
 	}
 
-	void OnPostRender() {
-		m.SetPass(0);
+	void OnRenderObject() {
+		blueMat.SetPass(0);
 		GL.PushMatrix();
-		GL.MultMatrix(g.transform.transform.localToWorldMatrix);
+		GL.MultMatrix(bluePen.transform.transform.localToWorldMatrix);
 		GL.Begin( GL.LINES );
 		GL.Color( new Color(0,0,0,0.4f) );
 		
@@ -130,16 +107,4 @@ public class LinesGL : MonoBehaviour {
 		GL.End();
 		GL.PopMatrix();
 	} 
-	
-	void OnGUI() {
-		GUI.Label (new Rect (10, 10, 300, 24), "GL. Cursor keys to rotate (with Shift for slow)", labelStyle);
-		int vc = lp.Length + sp.Length;
-		GUI.Label (new Rect (10, 26, 300, 24), "Pushing " + vc + " vertices. 'C' to clear", labelStyle);
-		
-		GUI.Label (new Rect (10, Screen.height - 20, 250, 24), ".Inspired by a demo from ", labelStyle);
-		if(GUI.Button (new Rect (150, Screen.height - 20, 300, 24), "mrdoob", linkStyle)) {
-			Application.OpenURL("http://mrdoob.com/lab/javascript/harmony/");
-		}
-	}
-
 }
