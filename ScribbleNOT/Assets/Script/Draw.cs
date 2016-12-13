@@ -3,11 +3,8 @@ using System.Collections;
 
 public class Draw : MonoBehaviour {
 
-    public Mesh redMesh;
-    public Mesh blueMesh;
-
-    public Material redMat;
-    public Material blueMat;
+    public GameObject redPen;
+    public GameObject bluePen;
 
     void Start () {
         RedDraw();
