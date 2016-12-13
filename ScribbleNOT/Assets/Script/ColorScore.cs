@@ -16,14 +16,16 @@ public class ColorScore : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D coll)
     {
-        if (coll.gameObject.tag == "RedPen")
+        if (coll.gameObject.tag == "RedPen" && this.gameObject.GetComponent<SpriteRenderer>().color != Color.red)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.red; 
+            this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            TotalScore.score++;
         }
 
-        if (coll.gameObject.tag == "BluePen")
+        if (coll.gameObject.tag == "BluePen" && this.gameObject.GetComponent<SpriteRenderer>().color != Color.blue)
         {
             this.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+            TotalScore.score--;
         }
     }
 }
