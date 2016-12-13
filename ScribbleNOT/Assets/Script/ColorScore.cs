@@ -3,8 +3,8 @@ using System.Collections;
 
 public class ColorScore : MonoBehaviour {
 
-    public Color blue = new Color(0, 0, 255, 255);
-    public Color red = new Color(255, 0, 0, 255);
+    public Color blue = new Color(0, 0, 1, 1);
+    public Color red = new Color(1, 0, 0, 1);
 
 	void Start () {
 
@@ -18,12 +18,12 @@ public class ColorScore : MonoBehaviour {
     {
         if (coll.gameObject.tag == "RedPen")
         {
-            this.gameObject.GetComponent<SpriteRenderer>().material.color = red; 
+            this.gameObject.GetComponent<SpriteRenderer>().color = Color.red; 
         }
 
         if (coll.gameObject.tag == "BluePen")
         {
-            this.gameObject.GetComponent<SpriteRenderer>().material.color = blue;
+            this.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
         }
     }
 }

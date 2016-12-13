@@ -19,6 +19,7 @@ public class placeSquare : MonoBehaviour {
                 GameObject newSquare = Instantiate(square) as GameObject;
                 placement = placement + new Vector3(.1f, 0, 0);
                 newSquare.transform.position = placement;
+                newSquare.transform.SetParent(this.transform);
             }
             placement = placement + new Vector3(-18, -.1f, 0);
         }
