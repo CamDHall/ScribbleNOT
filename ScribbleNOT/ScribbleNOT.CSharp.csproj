@@ -73,6 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Cells.cs" />
+    <Compile Include="Assets\Script\ColorScore.cs" />
+    <Compile Include="Assets\Script\MoveBlue.cs" />
+    <Compile Include="Assets\Script\MoveRed.cs" />
     <Compile Include="Assets\Script\placeSquare.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
