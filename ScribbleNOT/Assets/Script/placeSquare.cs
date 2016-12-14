@@ -2,11 +2,7 @@
 using System.Collections;
 
 public class placeSquare : MonoBehaviour {
-    float xPlace = -9f;
-    float yPlace = 0f;
     public GameObject square;
-    int count = 0;
-    int count2 = 0;
     Vector3 placement = new Vector3 (-9, 6, 0);
 
 

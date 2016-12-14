@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MoveBlue : MonoBehaviour {
 
-    float speed = 3.5;
+    float speed = 3.5f;
     // Use this for initialization
     void Start () {
 	
