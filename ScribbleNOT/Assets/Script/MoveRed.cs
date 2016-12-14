@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MoveRed : MonoBehaviour {
-    int speed = 2;
+    float speed = 3.5f;
 	// Use this for initialization
 	void Start () {
 	
@@ -29,11 +29,11 @@ public class MoveRed : MonoBehaviour {
         }
         if (Input.GetKeyDown("space"))
         {
-            speed = 2;
+            speed = 2.5f;
         }
         if (Input.GetKeyUp("space"))
         {
-            speed = 3;
+            speed = 3.5f;
         }
     }
 }

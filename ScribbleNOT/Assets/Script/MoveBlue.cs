@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MoveBlue : MonoBehaviour {
 
-    int speed = 3;
+    float speed = 3.5;
     // Use this for initialization
     void Start () {
 	
@@ -30,11 +30,11 @@ public class MoveBlue : MonoBehaviour {
         }
         if (Input.GetKeyDown("t"))
         {
-            speed = 2;
+            speed = 2.5f;
         }
         if (Input.GetKeyUp("t"))
         {
-            speed = 3;
+            speed = 3.5f;
         }
     }
 }
