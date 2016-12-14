@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MoveRed : MonoBehaviour {
-
+    int speed = 2;
 	// Use this for initialization
 	void Start () {
 	
@@ -13,19 +13,27 @@ public class MoveRed : MonoBehaviour {
     {
         if (Input.GetKey("right"))
         {
-            transform.Translate(2 * Vector3.right * Time.deltaTime);
+            transform.Translate(speed * Vector3.right * Time.deltaTime);
         }
         if (Input.GetKey("left"))
         {
-            transform.Translate(2 * -Vector3.right * Time.deltaTime);
+            transform.Translate(speed * -Vector3.right * Time.deltaTime);
         }
         if (Input.GetKey("up"))
         {
-            transform.Translate(2 * Vector3.up * Time.deltaTime);
+            transform.Translate(speed * Vector3.up * Time.deltaTime);
         }
         if (Input.GetKey("down"))
         {
-            transform.Translate(2 * -Vector3.up * Time.deltaTime);
+            transform.Translate(speed * -Vector3.up * Time.deltaTime);
+        }
+        if (Input.GetKeyDown("space"))
+        {
+            speed = 2;
+        }
+        if (Input.GetKeyUp("space"))
+        {
+            speed = 3;
         }
     }
 }

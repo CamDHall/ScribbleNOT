@@ -16,24 +16,30 @@ public class ColorScore : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D coll)
     {
-        if (coll.gameObject.tag == "RedPen" && this.gameObject.GetComponent<SpriteRenderer>().color != Color.red)
-        {
-            if (this.gameObject.GetComponent<SpriteRenderer>().color == Color.blue)
+            if (coll.gameObject.tag == "RedPen" && this.gameObject.GetComponent<SpriteRenderer>().color != Color.red)
             {
-                TotalScore.scoreBlue--;
+                 if (Input.GetKey("space"))
+                {
+                    if (this.gameObject.GetComponent<SpriteRenderer>().color == Color.blue)
+                    {
+                        TotalScore.scoreBlue--;
+                    }
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                TotalScore.scoreRed++;
+                }
             }
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            TotalScore.scoreRed++;
-        }
+            if (coll.gameObject.tag == "BluePen" && this.gameObject.GetComponent<SpriteRenderer>().color != Color.blue)
+            {
+                if (Input.GetKey("t"))
+                    {
 
-        if (coll.gameObject.tag == "BluePen" && this.gameObject.GetComponent<SpriteRenderer>().color != Color.blue)
-        {
-            if (this.gameObject.GetComponent<SpriteRenderer>().color == Color.red)
-            {
-                TotalScore.scoreRed--;
+                        if (this.gameObject.GetComponent<SpriteRenderer>().color == Color.red)
+                            {
+                            TotalScore.scoreRed--;
+                            }
+                        this.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                        TotalScore.scoreBlue++;
+                     }
             }
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-            TotalScore.scoreBlue++;
-        }
     }
 }

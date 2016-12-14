@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MoveBlue : MonoBehaviour {
 
-
+    int speed = 3;
     // Use this for initialization
     void Start () {
 	
@@ -14,20 +14,27 @@ public class MoveBlue : MonoBehaviour {
     {
         if (Input.GetKey("d"))
         {
-            transform.Translate(2*Vector3.right * Time.deltaTime);
+            transform.Translate(speed*Vector3.right * Time.deltaTime);
         }
         if (Input.GetKey("a"))
         {
-            transform.Translate(2*-Vector3.right * Time.deltaTime);
+            transform.Translate(speed*-Vector3.right * Time.deltaTime);
         }
         if (Input.GetKey("w"))
         {
-            transform.Translate(2*Vector3.up * Time.deltaTime);
+            transform.Translate(speed*Vector3.up * Time.deltaTime);
         }
         if (Input.GetKey("s"))
         {
-            transform.Translate(2*-Vector3.up * Time.deltaTime);
+            transform.Translate(speed*-Vector3.up * Time.deltaTime);
         }
-
+        if (Input.GetKeyDown("t"))
+        {
+            speed = 2;
+        }
+        if (Input.GetKeyUp("t"))
+        {
+            speed = 3;
+        }
     }
 }
