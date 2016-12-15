@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour {
 
+
     public GameObject redPen;
     public GameObject bluePen;
 
@@ -47,4 +48,5 @@ public class UI : MonoBehaviour {
             Winner = "TIE";
         }
     }
+
 }
