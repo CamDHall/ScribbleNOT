@@ -28,11 +28,11 @@ public class MoveBlue : MonoBehaviour {
         {
             transform.Translate(speed*-Vector3.up * Time.deltaTime);
         }
-        if (Input.GetKeyDown("t"))
+        if (Input.GetKeyDown("left shift"))
         {
             speed = 2.5f;
         }
-        if (Input.GetKeyUp("t"))
+        if (Input.GetKeyUp("left shift"))
         {
             speed = 3.5f;
         }

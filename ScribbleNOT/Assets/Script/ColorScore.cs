@@ -56,7 +56,7 @@ public class ColorScore : MonoBehaviour {
             }
             if (coll.gameObject.tag == "BluePen" && this.gameObject.GetComponent<SpriteRenderer>().color != Color.blue)
             {
-                if (Input.GetKey("t"))
+                if (Input.GetKey("left shift"))
                     {
 
                         if (this.gameObject.GetComponent<SpriteRenderer>().color == Color.red)
